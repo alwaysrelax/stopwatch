@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --brick-amount: 1;
+}
+
+#bricks_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+.brick {
+  height: calc(85vh / var(--brick-amount));
+  width: calc(85vh / var(--brick-amount));
+  background-color: black;
+  border: ridge rgba(255, 255, 255, 0.3) calc(90vh / var(--brick-amount)*0.2);
+  animation: fallingBrick ease-in 1s;
+  transition: 1s;
+}
+
+#end {
+  visibility: hidden;
+  text-wrap: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20vmin;
+  color: whitesmoke;
+  text-shadow: 0 0 5px black;
+}
+
+#end.active {
+  visibility: visible;
+}
+
+@keyframes fallingBrick {
+  0% {
+    transform: translateY(-50vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
